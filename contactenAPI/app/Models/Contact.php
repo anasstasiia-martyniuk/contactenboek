@@ -17,6 +17,6 @@ class Contact extends Model
         'phone',
         'company',
         'notes',
-        'is_faorite'
+        'is_favorite'
     ];
 }
