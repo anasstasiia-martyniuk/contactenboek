@@ -39,7 +39,7 @@ class UpdateContactRequest extends FormRequest
             'email'=>['required', 'email', 'max:255', Rule::unique('contacts', 'email')->ignore($this->route('id'))],
             'phone'=>'sometimes|nullable|regex:/^[0-9\s+-]+$/|max:20',
             'company'=>'sometimes|string|nullable|max:255',
-            'notes'=>'sometimes|string|nullable|max:255',
+            'notes'=>'sometimes|string|nullable|max:2000',
             'is_favorite'=>'sometimes|boolean'
         ];
     }

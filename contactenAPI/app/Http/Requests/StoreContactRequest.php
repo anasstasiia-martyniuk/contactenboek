@@ -38,7 +38,7 @@ class StoreContactRequest extends FormRequest
             'email'=>'required|email|unique:contacts,email|max:255',
             'phone'=>'sometimes|nullable|regex:/^[0-9\s+-]+$/|max:20',
             'company'=>'sometimes|string|nullable|max:255',
-            'notes'=>'sometimes|string|nullable|max:255',
+            'notes'=>'sometimes|string|nullable|max:2000',
             'is_favorite'=>'sometimes|boolean'
         ];
     }

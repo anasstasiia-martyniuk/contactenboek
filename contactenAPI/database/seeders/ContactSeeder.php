@@ -34,7 +34,7 @@ class ContactSeeder extends Seeder
             'phone'=>null,
             'company'=>null,
             'notes'=>null,
-            'is_favorite'=>1
+            'is_favorite'=>true
         ]);
         
         Contact::create([
@@ -44,7 +44,7 @@ class ContactSeeder extends Seeder
             'phone'=>null,
             'company'=>null,
             'notes'=>"This is the first line.\nThis is the second line.\nThis is the third line.",
-            'is_favorite'=>1
+            'is_favorite'=>true
         ]);
     }
 }
