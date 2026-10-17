@@ -8,9 +8,13 @@ function App() {
   
     const [contacts, setContacts] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
+    
     const [search, setSearch] = useState('');
+    const [sort, setSort] = useState('last_name');
+    const [direction, setDirection] = useState('asc');
+    
     const [debounceSearch, setDebounceSearch] = useState('');
-    const [error, setError] = useState('');
     
     const loadContacts = (params) => {
         setLoading(true);
@@ -30,10 +34,12 @@ function App() {
     };
     
     useEffect(() => {
-        loadContacts(
-            debounceSearch ? {search: debounceSearch} : {},
-        );
-    }, [debounceSearch]);
+        loadContacts({
+            ...(debounceSearch ? { search: debounceSearch } : {}),
+            sort,
+            direction,
+        });
+    }, [debounceSearch, sort, direction]);
     
     
     // search
@@ -62,7 +68,14 @@ function App() {
   
     return (
         <div className="App">
-            <ContactToolbar search={search} onSearch={handleSearch}/>
+            <ContactToolbar
+                search={search}
+                onSearch={handleSearch}
+                sort={sort}
+                onSortChange={setSort}
+                direction={direction}
+                onDirectionChange={setDirection}
+            />
             
             {loading ? (<p>Loading...</p>)
                 : error ? (<p>{error}</p>)
@@ -73,6 +86,7 @@ function App() {
                     onToggleFavorite={handleToggleFavorite}
                 />
             )}
+            
       </div>
     );
 }
