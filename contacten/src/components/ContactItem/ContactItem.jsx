@@ -1,4 +1,4 @@
-export const ContactItem = ({ id, first_name, last_name, email, phone, company, is_favorite, onToggleFavorite }) => {
+export const ContactItem = ({ id, first_name, last_name, email, phone, company, is_favorite, onToggleFavorite, favoriteError }) => {
     return (
         <li>
             <div>
@@ -10,7 +10,10 @@ export const ContactItem = ({ id, first_name, last_name, email, phone, company, 
             <button
                 type="button"
                 onClick={() => onToggleFavorite(id)}
-                className={is_favorite ? "favorite" : "nofavorite"}>★</button>
+                className={is_favorite ? "favorite" : "nofavorite"}>
+                ★
+            </button>
+            {favoriteError && <p>{favoriteError}</p>}
         </li>
     )
 }

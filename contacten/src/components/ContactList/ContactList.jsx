@@ -1,19 +1,14 @@
 import {ContactItem} from "../ContactItem/ContactItem"
 
-export const ContactList = ({ contacts, onToggleFavorite }) => {
+export const ContactList = ({ contacts, onToggleFavorite, favoriteError }) => {
     return (
         <ul>
-            {contacts.map(({id, first_name, last_name, email, phone, company, is_favorite}) =>
+            {contacts.map((contact) =>
                 <ContactItem
-                    key={id}
-                    id={id}
-                    first_name={first_name}
-                    last_name={last_name}
-                    email={email}
-                    phone={phone}
-                    company={company}
-                    is_favorite={is_favorite}
+                    key={contact.id}
+                    {...contact}
                     onToggleFavorite={onToggleFavorite}
+                    favoriteError={favoriteError[contact.id]}
                 />)}
         </ul>
     )

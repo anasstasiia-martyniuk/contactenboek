@@ -1,4 +1,15 @@
-export const ContactToolbar = ({ search, onSearch, sort, onSortChange, direction, onDirectionChange, perPage, onPerPageChange, resetPage }) => {
+export const ContactToolbar = ({
+    search,
+    onSearch,
+    sort,
+    onSortChange,
+    direction,
+    onDirectionChange,
+    perPage,
+    onPerPageChange,
+    onlyFavorites,
+    onFavoriteChange,
+    resetPage }) => {
     return (
         <div>
             
@@ -25,6 +36,12 @@ export const ContactToolbar = ({ search, onSearch, sort, onSortChange, direction
                 <option value={25}>25</option>
                 <option value={50}>50</option>
             </select>
+            
+            <div>
+                <label>Alleen favoriete
+                    <input type="checkbox" checked={onlyFavorites} onChange={event => onFavoriteChange(event.target.checked)}/>
+                </label>
+            </div>
             
         </div>
     )
