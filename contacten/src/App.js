@@ -3,6 +3,7 @@ import api from "./api";
 import { useState, useEffect } from 'react';
 import { ContactList } from './components/ContactList/ContactList';
 import { ContactToolbar } from './components/ContactToolbar/ContactToolbar';
+import { ContactForm } from './components/ContactForm/ContactForm';
 
 function App() {
   
@@ -142,6 +143,8 @@ function App() {
                 onFavoriteChange={handleFavoriteChanges}
                 resetPage={resetPage}
             />
+            
+            <ContactForm onContactSubmit={loadContacts}/>
             
             {loading ? (<p>Loading...</p>)
                 : error ? (<p>{error}</p>)

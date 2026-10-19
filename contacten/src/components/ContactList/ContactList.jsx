@@ -1,8 +1,9 @@
-import {ContactItem} from "../ContactItem/ContactItem"
+import "./ContactList.css"
+import { ContactItem } from "../ContactItem/ContactItem"
 
 export const ContactList = ({ contacts, onToggleFavorite, favoriteError }) => {
     return (
-        <ul>
+        <ul className="contactList">
             {contacts.map((contact) =>
                 <ContactItem
                     key={contact.id}

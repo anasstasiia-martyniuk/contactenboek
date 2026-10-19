@@ -1,11 +1,15 @@
+import "./ContactItem.css"
+
 export const ContactItem = ({ id, first_name, last_name, email, phone, company, is_favorite, onToggleFavorite, favoriteError }) => {
     return (
-        <li>
+        <li className="contactItem">
             <div>
-                <p>{first_name} {last_name}</p>
+                <p className="contactName">{first_name} {last_name}</p>
                 <p>{company ?? "Geen bedrijf"}</p>
-                <p>{email}</p>
-                <p>{phone ?? "Geen telefoonnumer"}</p>
+                <div className="emailPhoneBox">
+                    <p>{email}</p>
+                    <p>{phone ?? "Geen telefoonnumer"}</p>
+                </div>
             </div>
             <button
                 type="button"
