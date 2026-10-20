@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { validateContact } from "../../utils/validateContact";
-import api from "../../api";
+import { validateContact } from "../utils/validateContact";
+import api from "../api";
 
 const emptyForm = {
     first_name: '',
@@ -55,12 +55,6 @@ export const ContactForm = ({initialData = null, onContactSubmit}) => {
             return;
         }
         
-        setErrors({});
-        setFormData({
-            ...emptyForm,
-            ...initialData
-        });
-        
         setIsSubmitting(true);
         
         const request = initialData?.id
@@ -80,7 +74,9 @@ export const ContactForm = ({initialData = null, onContactSubmit}) => {
                     }));
                 }
             })
-            .finally(() => setIsSubmitting(false));
+            .finally(() => {                
+                setIsSubmitting(false)
+            });
     }
     
     return (

@@ -1,8 +1,8 @@
 import api from "../../api";
 import { useState, useEffect } from 'react';
-import { ContactList } from '../../components/ContactList/ContactList';
-import { ContactToolbar } from '../../components/ContactToolbar/ContactToolbar';
-import { ContactForm } from '../../components/ContactForm/ContactForm';
+import { ContactList } from '../../components/ContactList';
+import { ContactToolbar } from '../../components/ContactToolbar';
+import { ContactForm } from '../../components/ContactForm';
 
 export const ContactsPage = () => {
   

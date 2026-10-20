@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./ContactDetails.css"
 import api from "../../api";
 import { useNavigate } from "react-router-dom";
-import { ContactForm } from "../ContactForm/ContactForm";
+import { ContactForm } from "../ContactForm";
 
 export const ContactDetails = ({
     id,
