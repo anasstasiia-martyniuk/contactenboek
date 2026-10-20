@@ -48,16 +48,16 @@ class UpdateContactRequest extends FormRequest
     {
         return [
             'first_name.required'=>'Voornaam is verplicht.',
-            'first_name.max'=>'De voornam mag maximaal 100 tekens bevatten.',
+            'first_name.max'=>'De voornaam mag maximaal 100 tekens bevaten.',
             'last_name.required'=>'Achternaam is verplicht.',
             'last_name.max'=>'De achternaam mag maximaal 100 tekens bevaten.',
             'email.required'=>'E-mailadres is verplicht.',
-            'email.email'=>'Vul een geldige e-mailadres in, bijv. email@example.com',
-            'email.max'=>'De e-mailadres mag maximaal 255 tekens bevatten.',
+            'email.email'=>'Vul een geldig e-mailadres in, bijv. email@example.com',
+            'email.max'=>'De e-mailadres mag maximaal 255 tekens bevaten.',
             'phone.regex'=>'Het telefoonnummer mag alleen cijfers, spaties, een + en een - bevatten.',
-            'phone.max'=>'Het telefoonnummer mag maximaal 20 tekens bevatten.',
-            'company.max'=>'De bedrijfsnaam mag maximaal 255 tekens bevatten.',
-            'notes.max'=>'De notities mag maximaal 2000 tekens bevatten.'
+            'phone.max'=>'Het telefoonnummer mag maximaal 20 tekens bevaten.',
+            'company.max'=>'De bedrijfsnaam mag maximaal 255 tekens bevaten.',
+            'notes.max'=>'De notitie mag maximaal 2000 tekens bevaten.'
         ];
     }
 }
