@@ -63,6 +63,10 @@ export const ContactForm = ({initialData = null, onContactSubmit}) => {
 
         request
             .then(() => {
+                if (!initialData?.id) {
+                    setFormData({ ...emptyForm });
+                    setErrors({});
+                }
                 onContactSubmit();
             })
             .catch((error) => {
@@ -205,7 +209,7 @@ export const ContactForm = ({initialData = null, onContactSubmit}) => {
                 type="submit"
                 className="btn btn-primary align-self-start mt-2 w-100"
                 disabled={isSubmitting}>
-                {isSubmitting ? "Bezig met opslaan..." : "Opslaan"}
+                {isSubmitting ? "Bezig met opslaan…" : "Opslaan"}
             </button>
         </form>
     );

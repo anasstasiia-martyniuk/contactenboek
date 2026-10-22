@@ -10,6 +10,7 @@ export const ContactsPage = () => {
     const [total, setTotal] = useState(0);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+    const [refreshKey, setRefreshKey] = useState(0);
     
     const [search, setSearch] = useState('');
     const [sort, setSort] = useState('last_name');
@@ -22,6 +23,7 @@ export const ContactsPage = () => {
     
     const [debounceSearch, setDebounceSearch] = useState('');
     const [favoriteError, setFavoriteError] = useState({});
+    const [favoriteLoading, setFavoriteLoading] = useState({});
     
     const resetPage = () => {
         setCurrentPage(1);
@@ -57,18 +59,19 @@ export const ContactsPage = () => {
             per_page: perPage,
             ...(onlyFavorites ? {is_favorite: 1 } : {})
         });
-    }, [debounceSearch, sort, direction, currentPage, perPage, onlyFavorites]);
+    }, [debounceSearch, sort, direction, currentPage, perPage, onlyFavorites, refreshKey]);
     
     
     // search
     const handleSearch = (value) => {
-        setSearch(value.toLowerCase());
+        setSearch(value);
     };
     
     // search debounce
     useEffect(() => {
         const timer = setTimeout(() => {
             setDebounceSearch(search);
+            setCurrentPage(1);
         }, 300);
         
         return (() => clearTimeout(timer));
@@ -81,12 +84,23 @@ export const ContactsPage = () => {
         setCurrentPage(1);
     };
     
-    const handleToggleFacorite = (id) => {
+    const handleContactSubmit = () => {
+        setCurrentPage(1);
+        setRefreshKey(previous => previous + 1);
+    }
+    
+    const handleToggleFavorite = (id) => {
         const contact = contacts.find((contact) => contact.id === id);
 
         if (!contact) return;
+        if (favoriteLoading[id]) return;
         
         const newFavoriteStatus = !contact.is_favorite;
+        
+        setFavoriteLoading(previous => ({
+            ...previous,
+            [id]: true
+        }));
         
         setFavoriteError((previous) => ({
             ...previous,
@@ -120,8 +134,13 @@ export const ContactsPage = () => {
                 setFavoriteError((previous) => ({
                     ...previous,
                     [id]: "Het bijwerken van de favorietenstatus is mislukt. Probeer het opnieuw.",
-                })),
-        );
+                })))
+            .finally(() => {
+                setFavoriteLoading((previous) => ({
+                    ...previous,
+                    [id]: false
+                }));
+            });
     }
   
     return (
@@ -143,7 +162,7 @@ export const ContactsPage = () => {
                 resetPage={resetPage}
             />
             
-            <ContactForm onContactSubmit={loadContacts}/>
+            <ContactForm onContactSubmit={handleContactSubmit}/>
             
             {loading ? (
                 <div className="d-flex flex-column align-items-center justify-content-center gap-3 py-5">
@@ -158,21 +177,23 @@ export const ContactsPage = () => {
                         <button
                             type="button"
                             className="btn btn-outline-danger align-self-start align-self-sm-auto"
-                            onClick={() => loadContacts()}>
+                            disabled={loading}
+                            onClick={() => setRefreshKey(previous => previous + 1)}>
                             Opnieuw proberen
                         </button>
                     </div>
                 ) : contacts.length === 0 ? (
                         <p className="text-secondary text-center py-4">
                             {debounceSearch
-                                ? `Geen contacten gevonden voor ${debounceSearch}.`
-                                : "Geen contacten."}
+                                ? `Geen contacten gevonden voor '${debounceSearch}'.`
+                                : "Geen contacten gevonden."}
                         </p>
                     ) : (
                             <ContactList
                                 contacts={contacts}
                                 favoriteError={favoriteError}
-                                onToggleFavorite={handleToggleFacorite}
+                                favoriteLoading={favoriteLoading}
+                                onToggleFavorite={handleToggleFavorite}
                 />
             )}
             

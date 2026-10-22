@@ -21,7 +21,7 @@ class ContactFactory extends Factory
             'first_name'=>fake()->firstName(),
             'last_name'=>fake()->lastName(),
             'email'=>fake()->unique()->safeEmail(),
-            'phone'=>fake()->phoneNumber(),
+            'phone'=>fake()->numerify('06########'),
             'company'=>fake()->company(),
             'notes'=>fake()->text(2000),
             'is_favorite'=>fake()->boolean()

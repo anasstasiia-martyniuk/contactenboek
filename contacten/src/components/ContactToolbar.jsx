@@ -19,10 +19,7 @@ export const ContactToolbar = ({
                 className="form-control flex-grow-1"
                 placeholder="Zoek contacten..."
                 value={search}
-                onChange={event => {
-                    onSearch(event.target.value);
-                    resetPage();
-                }}
+                onChange={event => { onSearch(event.target.value); }}
             />
 
             <select

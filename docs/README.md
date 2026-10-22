@@ -16,7 +16,7 @@
 
 5. Maak de database en voer de migraties en seeders uit:
 
-   php artisan migrate --class=ContactSeeder
+   php artisan migrate --seed
 
 6. Start de server:
 
@@ -54,6 +54,26 @@
 - SQLite als database.
 - Axios voor API-verzoeken.
 - Bootstrap voor de vormgeving.
+
+## Wat is af en wat niet?
+
+### Af:
+De hierboven beschreven functionaliteiten.
+
+### Nog te controleren:
+Alle randgevallen uit de opdracht.
+De consistentie van foutmeldingen en API-validatie.
+
+## Randgevallen 
+
+Randgevallen die moeten werken:
+•	Je verwijdert het laatste contact op de laatste pagina. Je komt op de pagina daarvoor, niet op "Pagina 4 van 3".
+•	Je klikt twee keer snel op Opslaan. Er komt maar één contact bij.
+•	De API staat uit. Je ziet een foutmelding, geen lege lijst.
+•	Je zoekt terwijl je op pagina 5 staat. Je ziet pagina 1 van de zoekresultaten.
+•	Je bewerkt een contact en verandert alleen het telefoonnummer. Opslaan lukt.
+•	Je zoekt op "JAN" en daarna op "jan". Je krijgt dezelfde resultaten.
+
 
 ## Bestede tijd
 

@@ -38,7 +38,7 @@ class ContactController extends Controller
         $sort = $validated['sort'] ?? 'last_name';
         $direction = $validated['direction'] ?? 'asc';
         
-        $query->orderBy($sort, $direction);
+        $query->orderBy($sort, $direction)->orderBy('id', 'asc');
         
         
         // pagination
@@ -53,7 +53,13 @@ class ContactController extends Controller
     
     public function show(string $id)
     {
-        $contact = Contact::findOrFail($id);
+        $contact = Contact::find($id);
+        
+        if (!$contact) {
+            return response()->json([
+                'message' => 'Contact niet gevonden.'
+            ], 404);
+        }
         
         return new ContactResource($contact)
         ->response()
@@ -71,7 +77,14 @@ class ContactController extends Controller
     
     public function update(UpdateContactRequest $request, string $id)
     {
-        $contact = Contact::findOrFail($id);
+        $contact = Contact::find($id);
+        
+        if (!$contact) {
+            return response()->json([
+                'message' => 'Contact niet gevonden.'
+            ], 404);
+        }
+        
         $contact->update($request->validated());
         
         return new ContactResource($contact)
@@ -81,7 +94,14 @@ class ContactController extends Controller
     
     public function updateFavorite(UpdateFavoriteContactRequest $request, string $id)
     {
-        $contact = Contact::findOrFail($id);
+        $contact = Contact::find($id);
+        
+        if (!$contact) {
+            return response()->json([
+                'message' => 'Contact niet gevonden.'
+            ], 404);
+        }
+        
         $contact->update($request->validated());
         
         return new ContactResource($contact)
@@ -91,7 +111,14 @@ class ContactController extends Controller
     
     public function destroy(string $id)
     {
-        $contact = Contact::findOrFail($id);
+        $contact = Contact::find($id);
+        
+        if (!$contact) {
+            return response()->json([
+                'message' => 'Contact niet gevonden.'
+            ], 404);
+        }
+        
         $contact->delete();
         
         return response()->noContent();

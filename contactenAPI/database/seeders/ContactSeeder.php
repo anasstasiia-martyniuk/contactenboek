@@ -30,7 +30,7 @@ class ContactSeeder extends Seeder
         Contact::create([
             'first_name'=>'Long',
             'last_name'=>'Email',
-            'email'=>'this.is.a.very.long.email.adres.for.testing@example.com',
+            'email'=>'this.is.a.very.long.email.address.for.testing.purposes@example.com',
             'phone'=>null,
             'company'=>null,
             'notes'=>null,

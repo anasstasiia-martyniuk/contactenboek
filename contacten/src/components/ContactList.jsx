@@ -3,7 +3,8 @@ import { ContactItem } from "./ContactItem";
 export const ContactList = ({
     contacts,
     onToggleFavorite,
-    favoriteError
+    favoriteError,
+    favoriteLoading
 }) => {
     return (
         <ul className="list-unstyled d-flex flex-column gap-3 mt-4">
@@ -13,6 +14,7 @@ export const ContactList = ({
                     {...contact}
                     onToggleFavorite={onToggleFavorite}
                     favoriteError={favoriteError[contact.id]}
+                    favoriteLoading={favoriteLoading[contact.id] ?? false}
                 />
             ))}
         </ul>

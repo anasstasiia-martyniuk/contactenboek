@@ -19,4 +19,8 @@ class Contact extends Model
         'notes',
         'is_favorite'
     ];
+    
+    protected $casts = [
+        'is_favorite' => 'boolean',
+    ];
 }

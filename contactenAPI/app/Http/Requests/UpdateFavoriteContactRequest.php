@@ -26,4 +26,12 @@ class UpdateFavoriteContactRequest extends FormRequest
             'is_favorite'=>'required|boolean'
         ];
     }
+    
+    public function messages(): array
+    {
+        return [
+            'is_favorite.required' => 'De favorietenstatus is verplicht.',
+            'is_favorite.boolean' => 'De favorietenstatus moet true of false zijn.',
+        ];
+    }
 }

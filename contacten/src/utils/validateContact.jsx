@@ -14,9 +14,9 @@ export const validateContact = ({first_name, last_name, email, phone, company, n
     }
     
     if (email.trim() === "") {
-        errors.email = ["Email is verplicht."];
+        errors.email = ["E-mailadres is verplicht."];
     } else if (email.length > 255) {
-        errors.email = ["De e-mailadres mag maximaal 255 tekens bevatten."]
+        errors.email = ["Het e-mailadres mag maximaal 255 tekens bevatten."]
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         errors.email = ["Vul een geldig e-mailadres in."];
     }
@@ -29,12 +29,12 @@ export const validateContact = ({first_name, last_name, email, phone, company, n
         } 
     }
     
-    if (company.length > 255) {
+    if (company && company.length > 255) {
         errors.company = ["De bedrijfsnaam mag maximaal 255 tekens bevatten."]
     }
     
-    if (notes.length > 2000) {
-        errors.company = ["De notities mag maximaal 2000 tekens bevatten."];
+    if (notes && notes.length > 2000) {
+        errors.notes = ["De notitie mag maximaal 2000 tekens bevatten."];
     }
     
     return errors;

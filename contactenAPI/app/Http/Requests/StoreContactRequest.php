@@ -20,7 +20,7 @@ class StoreContactRequest extends FormRequest
     {
         if($this->has('email') && is_string($this->input('email'))){
             $this->merge([
-                'email'=> strtolower($this->input('email')),
+                'email'=> strtolower(trim($this->input('email'))),
             ]);
         }
     }
@@ -47,17 +47,18 @@ class StoreContactRequest extends FormRequest
     {
         return [
             'first_name.required'=>'Voornaam is verplicht.',
-            'first_name.max'=>'De voornaam mag maximaal 100 tekens bevaten.',
+            'first_name.max'=>'De voornaam mag maximaal 100 tekens bevatten.',
             'last_name.required'=>'Achternaam is verplicht.',
-            'last_name.max'=>'De achternaam mag maximaal 100 tekens bevaten.',
+            'last_name.max'=>'De achternaam mag maximaal 100 tekens bevatten.',
             'email.required'=>'E-mailadres is verplicht.',
-            'email.email'=>'Vul een geldig e-mailadres in, bijv. email@example.com',
+            'email.email'=>'Vul een geldig e-mailadres in, bijv. email@example.com.',
             'email.unique'=>'Dit e-mailadres is al in gebruik.',
-            'email.max'=>'De e-mailadres mag maximaal 255 tekens bevaten.',
+            'email.max'=>'Het e-mailadres mag maximaal 255 tekens bevatten.',
             'phone.regex'=>'Het telefoonnummer mag alleen cijfers, spaties, een + en een - bevatten.',
-            'phone.max'=>'Het telefoonnummer mag maximaal 20 tekens bevaten.',
-            'company.max'=>'De bedrijfsnaam mag maximaal 255 tekens bevaten.',
-            'notes.max'=>'De notitie mag maximaal 2000 tekens bevaten.'
+            'phone.max'=>'Het telefoonnummer mag maximaal 20 tekens bevatten.',
+            'company.max'=>'De bedrijfsnaam mag maximaal 255 tekens bevatten.',
+            'notes.max'=>'De notitie mag maximaal 2000 tekens bevatten.',
+            'is_favorite.boolean' => 'De waarde van is_favorite moet waar of onwaar zijn.'
         ];
     }
 }

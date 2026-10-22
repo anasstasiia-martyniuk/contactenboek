@@ -9,8 +9,10 @@ export const ContactItem = ({
     company,
     is_favorite,
     onToggleFavorite,
-    favoriteError
+    favoriteError,
+    favoriteLoading
 }) => {
+    
     return (
         <li className="d-flex flex-column gap-2 border border-dark rounded-3 p-3 p-md-4 position-relative">
             
@@ -30,6 +32,7 @@ export const ContactItem = ({
             <button
                 type="button"
                 onClick={() => onToggleFavorite(id)}
+                disabled={favoriteLoading}
                 className={`btn btn-link position-absolute top-0 end-0 p-1 fs-4 lh-1 text-decoration-none 
                     ${ is_favorite ? "text-warning" : "text-secondary"}`}>
                 ★

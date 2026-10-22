@@ -18,6 +18,15 @@ Acceptatiecriteria
 - Gegeven dat het e-mailadres al bestaat, wanneer ik het contact opsla, dan zie ik een foutmelding.
 
 
+## US-03 Contacten bekijken
+Als gebruiker wil ik een overzicht van mijn contacten kunnen bekijken, 
+zodat ik snel de contactgegevens kan vinden die ik nodig heb.
+
+Acceptatiecriteria
+- Gegeven dat er contacten bestaan, wanneer ik de contactenlijst open, dan zie ik de beschikbare contacten.
+- Gegeven een contact, wanneer ik de details open, dan zie ik de gegevens van dat contact.
+
+
 ## US-04 Contact bewerken
 Als gebruiker wil ik de gegevens van een contact kunnen bewerken,
 zodat ik contactinformatie actueel kan houden.
